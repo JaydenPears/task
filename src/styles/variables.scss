@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+// font
+$font: 'Montserrat', sans-serif;
+
+// colors
+
+// Никита, трогай только следующие три
+// $bg: #f4f4f8;
+// $light: #c3b9e3;
+// $primary: rgb(197,135,218);
+
+$bg: #EDEDF4;
+$light: #D4C1EC;
+$primary: #f7854d;
+
+$light2: #efe9e6;
+$lightLine: #dbe6ed;
+
+$orange: #ffbf94;
+
+$dark: rgb(29, 29, 29);
+$dark2: #08332f;
+$darkLine: #055449;
+
+$aqua: #229b91;
+$white: #fff;
+$black: #030502;
+
+// border-radius
+$borderRadius: 12px;
+
+// letter spacing
+$letterSpacing: 0.4px;
+
+// box shadow
+$boxShadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;

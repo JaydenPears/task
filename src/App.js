@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+// import components:
+import Assortment from "./components/Assortment/Assortment";
+import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+// import static:
+import "./styles/App.scss";
+
+const App = () => {
+    return (
+        <div className="App">
+            <Assortment/>
+            <ShoppingCart/>
+        </div>
+    );
+};
 
 export default App;
