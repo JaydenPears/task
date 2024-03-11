@@ -6,7 +6,7 @@ const ShoppingCart = () => {
         <div>
             <h1>Здесь будет корзина</h1>
         </div>
-    )
+    );
 };
 
 export default ShoppingCart;
