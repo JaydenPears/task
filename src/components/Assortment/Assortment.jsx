@@ -42,7 +42,7 @@ const Assortment = () => {
     }, []);
 
     return (
-        <Group header={<Title level="2" style={{ marginBottom: 16 }}>Ассортимент</Title>}>
+        <Group header={<Title level="2" style={{ margin: "16px 16px 16px 0px" }}>Ассортимент</Title>}>
             <CardGrid size={windowSize["innerWidth"] < 600
                 ? "l"
                 : "s"
