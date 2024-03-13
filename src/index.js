@@ -27,8 +27,10 @@ const App = () => {
                 <View activePanel="main">
                     <Panel id="main">
                         <PanelHeader>Задание на стажировку</PanelHeader>
-                        <Assortment />
-                        <ShoppingCart />
+                        <div style={{display: "flex", flexDirection: "row"}}>
+                            <Assortment />
+                            <ShoppingCart />
+                        </div>
                     </Panel>
                 </View>
             </SplitCol>
