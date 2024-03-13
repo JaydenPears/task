@@ -1,8 +1,7 @@
 // import libs:
 import React, { useState, useEffect } from 'react';
 import {
-    Title,
-    FixedLayout
+    FixedLayout,
 } from '@vkontakte/vkui';
 import { store } from '../../context/itemsCart.mjs'; 
 
@@ -19,16 +18,15 @@ const ShoppingCart = () => {
         for (let key in items){
             newPrice += items[key]["price"] * items[key]["count"];
         };
-        console.log(newPrice);
         setPrice(newPrice);
     }, [items]);
 
     return (
-        <div style={{width: "25%"}}>
+        <div style={{width: "25%", marginLeft: "16px"}}>
             <FixedLayout>
-                <Title level="2" style={{ marginLeft: "16px", marginTop: "24px" }}>
-                    Итоговая цена: {price} $.
-                </Title>
+                <p style={{ fontSize: "20px", width: "24%", marginTop: "24px", fontWeight: "500", whiteSpace: "balance"}}>
+                    Итог: {price}$
+                </p>
             </FixedLayout>
         </div>
     );

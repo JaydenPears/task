@@ -87,10 +87,11 @@ const Assortment = () => {
                                 </Button>
                             </ButtonGroup>
                         }
+                        width={400}
                         height={200}
                         text={
                             <Text>
-                                <b>Стоимость товара: {elem["price"]} $</b>
+                                <b>Стоимость товара: {elem["price"]}$</b>
                             </Text>
                         }
                     />
