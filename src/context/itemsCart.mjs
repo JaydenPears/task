@@ -16,9 +16,10 @@ const itemsCart = createSlice({
             }
         },
         remove: (state, data) => {
-            let [item_id, currentState, cost] = data["payload"];
-            currentState[item_id] = {...currentState[item_id], "count": currentState[item_id]["count"] - 1};
-            return {...currentState};
+            let [item_id, currentState] = data["payload"];
+            let upd = {...currentState};
+            upd[item_id] = {...upd[item_id], "count": upd[item_id]["count"] - 1};
+            return {...upd};
         }
     }
 });

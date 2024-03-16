@@ -9,26 +9,29 @@ import {
     ButtonGroup,
     Button,
  } from '@vkontakte/vkui';
+ import { getWindowSize } from '../../getWindowSize';
  import { store, add, remove } from '../../context/itemsCart.mjs';
 
 // import static:
 import '@vkontakte/vkui/dist/vkui.css';
-
-function getWindowSize() {
-    const {innerWidth, innerHeight} = window;
-    return {innerWidth, innerHeight};
-}
 
 const Assortment = () => {
     const [items, setItems] = useState([]);
     const [windowSize, setWindowSize] = useState(getWindowSize());
     const [currentState, setCurrentState] = useState(store.getState());
 
+    const getCurrentTitle = (string) => {
+        if (string.length > 15){
+            return `${string.substr(0, 20)}...`;
+        }
+        return string;
+    }
+
     useEffect(() => {
         fetch(`https://dummyjson.com/carts/1`)
         .then(response => response.json())
         .then((data) => {
-          setItems(data['products']);
+            setItems(data['products']);
         })
         .catch(error => console.error(error));
     }, []);
@@ -59,7 +62,11 @@ const Assortment = () => {
     }
 
     const removeItem = (id) => {
-        console.log(1)
+        let item_id = items[id]["id"];
+        if (currentState[item_id]["count"] - 1 >= 0){
+            store.dispatch(remove([item_id, currentState]));
+        }
+        setCurrentState(store.getState());
     }
 
     return (
@@ -75,15 +82,50 @@ const Assortment = () => {
                 {items.map((elem, index) => 
                     <ContentCard
                         key={elem["id"]}
-                        header={elem["title"]}
+                        header={
+                            <Title level="3">{ getCurrentTitle(elem["title"]) }</Title>
+                        }
                         src={elem["thumbnail"]}
                         caption={
                             <ButtonGroup>
-                                <Button id={elem["id"]} size="l" onClick={(e) => addItem(index, elem["id"])}>
-                                    Buy me
+                                <Button
+                                    id={elem["id"]}
+                                    size="l"
+                                    appearance='positive'
+                                    onClick={(e) => addItem(index, elem["id"])}
+                                    disabled=
+                                    {currentState[elem["id"]] !== undefined
+                                        ? elem["quantity"] === currentState[elem["id"]]["count"]
+                                            ? true
+                                            : false
+                                        : false
+                                    }
+                                >
+                                    {currentState[elem["id"]] !== undefined
+                                        ? elem["quantity"] === currentState[elem["id"]]["count"]
+                                            ? "Товар кончился"
+                                            : "Добавить товар"
+                                        : "Добавить товар"
+                                    }
                                 </Button>
-                                <Button id={elem["id"]} size="l" onClick={(e) => removeItem(index, elem["id"])}>
-                                    Delete me
+                                <Button
+                                    id={elem["id"]}
+                                    size="l"
+                                    appearance='negative'
+                                    onClick={(e) => removeItem(index, elem["id"])}
+                                    disabled={currentState[elem["id"]] !== undefined
+                                        ? currentState[elem["id"]]["count"] === 0
+                                            ? true
+                                            : false
+                                        : true
+                                    }
+                                >
+                                    {currentState[elem["id"]] !== undefined
+                                        ? currentState[elem["id"]]["count"] === 0
+                                            ? "Нечего удалять"
+                                            : "Удалить товар"
+                                        : "Нечего удалять"
+                                    }
                                 </Button>
                             </ButtonGroup>
                         }
