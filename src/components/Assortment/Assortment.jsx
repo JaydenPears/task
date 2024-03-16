@@ -133,7 +133,7 @@ const Assortment = () => {
                         height={200}
                         text={
                             <Text>
-                                <b>Стоимость товара: {elem["price"]}$</b>
+                                <b>Стоимость товара: {elem["price"]} руб.</b>
                             </Text>
                         }
                     />

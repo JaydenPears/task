@@ -40,7 +40,7 @@ const ShoppingCart = () => {
         <div style={{width: "25%", marginLeft: windowSize["innerWidth"] > 600 ? "16px" : "0px"}}>
             <FixedLayout>
                 <p style={{ fontSize: "20px", width: "24%", marginTop: "24px", fontWeight: "500", whiteSpace: "balance"}}>
-                    Итог: {price}$
+                    Итог: {price} руб.
                 </p>
             </FixedLayout>
         </div>
